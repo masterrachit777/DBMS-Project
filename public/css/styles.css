@@ -1,0 +1,52 @@
+h1{
+    color: brown;
+    margin: 20px 10px 20px 10px;
+}
+
+body{
+    text-align: center;
+    background-image: linear-gradient(to left, pink, turquoise);
+}
+
+body, html{
+    height: 100%;
+}
+
+table{
+    width: 100%;
+}
+table, th, td{
+    border: 1px solid black;
+    padding: 15px;
+}
+h1{
+    text-align: center;
+    color: brown;
+}
+
+.btn{
+    margin: 10px;
+}
+
+.offered p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.offered p span{
+    color: indianred;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: darkturquoise;
+}
+th{
+    background-color: mediumspringgreen;
+}
+
+.footer{
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    color: rgb(24, 18, 18);
+}

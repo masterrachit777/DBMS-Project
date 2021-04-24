@@ -1,0 +1,78 @@
+<%- include('header') -%>
+
+<div class="container">
+    <h1>Search by COURSE!</h1>
+
+    <% if(pageTitle==='Domains' ) { %>
+
+        <form action='/course' method="POST">
+          <div class="form-group">
+            <label> Select Domain </label>
+            <select class="form-control" id="categoryList">
+                <% categoryList.forEach(function(category) { %>
+                    <option value="<%= category %>">
+                        <%= category %>
+                    </option>
+                    <% }); %>
+            </select>
+            <input class="form-control" type="hidden" name="categoryName" id="categoryInput" value=""></input>
+            <button class="btn btn-secondary" type="submit" onclick="getDomain()">Go</button>
+          </div>
+        </form>
+
+        <% } else if(pageTitle==='Courses' ) { %>
+
+            <h3>
+                <%= domain %>
+            </h3>
+
+            <form action='/offered-by' method="POST">
+              <div class="form-group">
+                <label> Select Course </label>
+                <select class="form-control" id="courseList">
+                    <% courseList.forEach(function(course) { %>
+                        <option value="<%= course %>">
+                            <%= course %>
+                        </option>
+                        <% }); %>
+                </select>
+                <input class="form-control" type="hidden" name="courseName" id="courseInput" value=""></input>
+                <button class="btn btn-secondary" type="submit" onclick="getCourse()">Go</button>
+              </div>
+            </form>
+
+            <% } else { %>
+
+                <hr>
+
+                <div class="offered">
+                    <p>
+                        => <span><strong><%= course %></strong></span> is offered by following Colleges
+                    </p>
+
+                    <table>
+                        <tr>
+                            <th>College</th>
+                            <th>Affiliated to</th>
+                            <th>Fees per Annum</th>
+                        </tr>
+
+                    <% for(var i=0; i < collegeList.length; i++) { %>
+
+                        <tr>
+                            <td><%= collegeList[i] %></td>
+                            <td><%= univList[i] %></td>
+                            <td><%= feesList[i] %>/-</td>
+                        </tr>
+
+                    <% } %>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+</div>
+
+<%- include('footer') -%>

@@ -1,0 +1,94 @@
+<%- include('header') -%>
+    <div class="container">
+
+        <h1>Welcome to Institutions info!</h1>
+
+        <% if(pageTitle==='Home' ) { %>
+
+            <form action='/college' method="POST">
+                <div class="form-group">
+                    <label> Select University </label>
+                    <select class="form-control" id="uList">
+                        <% universityList.forEach(function(university) { %>
+                            <option value="<%= university %>">
+                                <%= university %>
+                            </option>
+                            <% }); %>
+                    </select>
+                    <input class="form-control" type="hidden" name="uName" id="univInput" value=""></input>
+                    <button class="btn btn-secondary" type="submit" onclick="getUniv()">Go</button>
+                </div>
+            </form>
+
+            <% } else if(pageTitle==='College' ) { %>
+
+                <h3>
+                    <%= uname %>
+                </h3>
+
+                <form action='/details' method="POST">
+                    <div class="form-group">
+                        <label> Select College </label>
+                        <select class="form-control" id="cList">
+                            <% collegeList.forEach(function(college) { %>
+                                <option value="<%= college %>">
+                                    <%= college %>
+                                </option>
+                                <% }); %>
+                        </select>
+                        <input type="hidden" class="form-control" name="cName" id="collegeInput" value=""></input>
+                        <button class="btn btn-secondary" type="submit" onclick="getCollege()">Go</button>
+                    </div>
+                </form>
+
+                <% } else { %>
+
+                    <hr>
+
+                    <div class="offered">
+                        <p>
+                            <span style="font-size: 30px;"><strong>
+                                    <%= pageTitle %>
+                                </strong></span>
+                        </p>
+                        <p><strong>Location: </strong>
+                            <%= address %>
+                        </p>
+                        <p><strong>Rank: </strong>
+                            <%= rank1 %>
+                        </p>
+                        <p><strong>NAAC Grade: </strong>
+                            <%= grade1 %>
+                        </p>
+
+                        <table>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Fees per Annum</th>
+                            </tr>
+
+                            <% for(var i=0; i < courseList.length; i++) { %>
+
+                                <tr>
+                                    <td>
+                                        <%= courseList[i] %>
+                                    </td>
+                                    <td>
+                                        <%= feesList[i] %>/-
+                                    </td>
+                                </tr>
+
+                                <% } %>
+
+                        </table>
+
+                        <br>
+                        <p><strong>Contact: </strong>
+                            <%= contact %>
+                        </p>
+
+                    </div>
+
+                    <% } %>
+    </div>
+    <%- include('footer') -%>
