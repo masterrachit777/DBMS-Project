@@ -28,25 +28,64 @@ app.get('/', (req, res) => {
 });
 
 var collegeArray = [];
+var uName;
 
-app.post("/college", (req, res) => {
+app.post("/university", (req, res) => {
 
-    let uName = req.body.uName;
+    uName = req.body.uName;
 
-    const query1 = "SELECT * FROM college,university WHERE UNO=UNUM AND UNAME LIKE '%" + uName + "%'";
-    collegeArray = [];
-    pool.query(query1, (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            for (var i = 0; i < result.length; i++) {
-                collegeArray.push(result[i].COLLEGE_NAME);
+    res.render("home", {pageTitle: "University", uname: uName});
+
+});
+
+var percentage = [];
+var exam = [];
+var subject = [];
+
+app.post("/details", (req, res) => {
+
+    let univ = req.body.univ;
+
+    if(univ === 'Colleges') {
+    
+        const query1 = "SELECT * FROM college,university WHERE UNO=UNUM AND UNAME LIKE '%" + uName + "%'";
+        collegeArray = [];
+        pool.query(query1, (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                for (var i = 0; i < result.length; i++) {
+                    collegeArray.push(result[i].COLLEGE_NAME);
+                }
+
+                res.render("home", { pageTitle: "College", uname: uName, collegeList: collegeArray });
             }
+        });
 
-            res.render("home", { pageTitle: "College", uname: uName, collegeList: collegeArray });
-        }
-    });
+    } else {
 
+        exam = [];
+        subject = [];
+        percentage = [];
+        courseArray = [];
+
+        const query6 = "SELECT CNAME,MIN_PERCENTAGE,QUALIFIER_EXAM,SUBJECT_REQUIRED FROM ELIGIBILITY,COURSE,UNIVERSITY WHERE UNO=UNUMBER AND PAPER_CODE=COURSE_CODE AND UNAME='" + uName + "'";
+        pool.query(query6, (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                
+                for (var i = 0; i < result.length; i++) {
+                    courseArray.push(result[i].CNAME);
+                    subject.push(result[i].SUBJECT_REQUIRED);
+                    exam.push(result[i].QUALIFIER_EXAM);
+                    percentage.push(result[i].MIN_PERCENTAGE);
+                }
+
+                res.render("home", { pageTitle: "University-Courses", uname: uName, courseList: courseArray, minPercentage: percentage, qualifierExam: exam, subjectRequired: subject });
+            }
+        });
+    }
 });
 
 var location = '';
@@ -54,7 +93,7 @@ var mail = '';
 var grade = '';
 var rank = '';
 
-app.post("/details", (req, res) => {
+app.post("/college", (req, res) => {
 
     let cName = req.body.cName;
 

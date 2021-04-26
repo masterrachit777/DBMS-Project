@@ -41,6 +41,16 @@ th{
     background-color: mediumspringgreen;
 }
 
+.univ-choice{
+    background-color: pink;
+    border-color: deeppink;
+}
+
+input[type='submit'].univ-choice:hover{
+    border: 1px solid violet;
+    box-shadow: 5px 5px 10px 5px gray;
+}
+
 .footer{
     position: relative;
     text-align: center;

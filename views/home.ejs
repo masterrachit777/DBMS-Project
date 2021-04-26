@@ -5,7 +5,7 @@
 
         <% if(pageTitle==='Home' ) { %>
 
-            <form action='/college' method="POST">
+            <form action='/university' method="POST">
                 <div class="form-group">
                     <label> Select University </label>
                     <select class="form-control" id="uList">
@@ -20,13 +20,30 @@
                 </div>
             </form>
 
-            <% } else if(pageTitle==='College' ) { %>
+            <% } else if(pageTitle==='University' ) { %>
 
                 <h3>
                     <%= uname %>
                 </h3>
 
-                <form action='/details' method="POST">
+                <form action="/details" method="post">
+                  <div class="row">
+                    <div class="col">
+                        <input class="form-control univ-choice" type="submit" name="univ" value="Courses">
+                    </div>
+                    <div class="col">
+                        <input class="form-control univ-choice" type="submit" name="univ" value="Colleges">
+                    </div>  
+                  </div>
+                </form>
+
+            <% } else if(pageTitle === 'College') { %>
+
+                <h3>
+                    <%= uname %>
+                </h3>
+
+                <form action='/college' method="POST">
                     <div class="form-group">
                         <label> Select College </label>
                         <select class="form-control" id="cList">
@@ -41,7 +58,48 @@
                     </div>
                 </form>
 
-                <% } else { %>
+            <% } else if(pageTitle === 'University-Courses') { %>
+                <hr>
+
+                    <div class="offered">
+                        <p>
+                            <span style="font-size: 30px;"><strong>
+                                    <%= uname %>
+                                </strong></span>
+                        </p>
+                        
+                        <table>
+                            <tr>
+                                <th>Course Offered</th>
+                                <th>Subject Required</th>
+                                <th>Qualifier Exam</th>
+                                <th>Minimum Percentage</th>
+                            </tr>
+
+                            <% for(var i=0; i < courseList.length; i++) { %>
+
+                                <tr>
+                                    <td>
+                                        <%= courseList[i] %>
+                                    </td>
+                                    <td>
+                                        <%= subjectRequired[i] %>
+                                    </td>
+                                    <td>
+                                        <%= qualifierExam[i] %>
+                                    </td>
+                                    <td>
+                                        <%= minPercentage[i] %>%
+                                    </td>
+                                </tr>
+
+                                <% } %>
+
+                        </table>
+
+                    </div>
+
+            <% } else { %>
 
                     <hr>
 
