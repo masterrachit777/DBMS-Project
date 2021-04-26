@@ -1,10 +1,16 @@
 # DBMS-Project
 DBMS Project - Educational Institutions Database
 
-## Work on it
+## Run the project
+
+In your Terminal
 
 first step
 
-$~ npm install
+~ npm install
 
-Then start working
+Then to run this project in your localhost
+
+~ node app.js
+
+(Must have node.js installed on your system)
