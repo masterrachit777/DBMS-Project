@@ -5,12 +5,12 @@
 
 > In your Terminal
 
->> first step
+- first step
 
->> `~ npm install`
+  `~ npm install`
 
->> Then to run this project in your localhost
+- Then to run this project in your localhost
 
->> `~ node app.js`
+  `~ node app.js`
 
->> (Must have node.js installed on your system)
+  (Must have node.js installed on your system)
