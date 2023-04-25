@@ -1,4 +1,4 @@
-# DBMS-Project
+# DBMS-Project (Complete)
 DBMS Project - Educational Institutions Database
 
 ## Run the project
