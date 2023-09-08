@@ -15,3 +15,5 @@ In your Terminal
   ~ npm start
   ```
   (Must have node.js installed on your system)
+
+## Doc Link: https://docs.google.com/document/d/1p1vmxOwfhTb_bYmU10MCyQNib1X7_JNVi5XF9NAeVbE/edit#heading=h.z6ne0og04bp5
